@@ -16,24 +16,30 @@ class FociChatbot(Chat):
     def converse(self):
         super().converse()
 
-    def respond(self, input):
-        return super().respond(input)
-
     def reset(self):
+
         self._pairs = []
+
+    def lerarray(self, entrada):
+        for texto in self._pairs:
+            if texto[0].pattern.lower() == entrada.lower():
+                print(''.join(texto[1]))
 
 f = FociChatbot()
 
-f.add_response('Oi', 'Escolha o que quer fazer')
+f.add_response('Oi', 'Digite Tarefas ou Compromissos')
 f.add_response('Tarefas', 'Refatorar código do robô sumô')
 f.add_response('Tarefas', 'Estudar e resolver exercícios da lista de Sinais e Sistemas')
+f.add_response('Tarefas', 'Desenvolver chatbot baseado no código fornecido')
 f.add_response('Compromissos', 'Ir a UABJ para reunião do PPE')
 f.add_response('Compromissos', 'Aula de IA na AEB as 8h')
 f.add_response('Compromissos', 'Aula de Sinais e Sistemas na AEB de 10h')
+f.add_response('Compromissos', 'Ir a aula de sistemas embarcados na AEB de 8h as 10h')
+f.add_response('Compromissos', 'Ir a aula de IA na AEB de 10h as 12h')
 
 while True:
     user_input = input("Você: ")
     if user_input.lower() == "quit":
         break
-    response = f.respond(user_input)
-    print("Bot:", response)
+
+    f.lerarray(user_input)
